@@ -1,1 +1,1 @@
-# pandas_practice
+# python_practice
