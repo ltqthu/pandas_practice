@@ -19,7 +19,8 @@ from Mail import mail
 from Weather import weather
 
 import datetime
-from apscheduler.schedulers.background import BackgroundScheduler
+# from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.schedulers.blocking import BlockingScheduler
 
 
 def get_yaml_data(yaml_file):
@@ -52,12 +53,13 @@ def mail_weather():
 
 if __name__ == "__main__":
     print("1")
-    scheduler = BackgroundScheduler()
-    scheduler.start()
-    print("2")
-
+    scheduler = BlockingScheduler()
     # scheduler.add_job(mail_weather, trigger='cron', second='*/30')
     scheduler.add_job(mail_weather, 'interval', seconds=30)
     logging.info("end")
+    scheduler.start()
+    print("2")
+
+
 
 
