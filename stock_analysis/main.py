@@ -1,8 +1,16 @@
 import pandas as pd
-df = pd.read_csv('sh.000001.csv', sep=',')
+import matplotlib.pyplot as plt
 
-print(df)
-print(df.iloc[0][0])
-print(df.iloc[0][1])
+# 读取数据
+df = pd.read_csv('data/sh.000001.csv', sep=',')
 
-print(df[(df['close2']-df['open2'])/df['open2'] > 0.05]['date'])
+# 找出上证指数当日涨幅超过5%的日期
+daily_incr = (df['close2']-df['open2'])/df['open2']
+date = df[daily_incr > 0.05]['date']
+print(date)
+
+# 绘制当日涨幅的分布图
+plt.figure()
+plt.hist(daily_incr, bins=50)
+plt.show()
+
