@@ -24,13 +24,17 @@ def main():
     B=1000000
     while A!=0 and B!=0:
         lista, listb, A, B = game(A,B,lista,listb)
-    plt.figure(figsize=(10, 5), dpi=150)
+    plt.figure(figsize=(10, 10), dpi=150)
     plt.subplot(211)
-    plt.plot(np.arange(0, len(lista)), lista, 'k-')
-    plt.legend(["A"])
+    plt.plot(np.arange(0, len(lista)),lista, 'k-')
+    plt.xlabel("times")
+    plt.ylabel("money")
+    plt.legend(["A"],loc=1)
     plt.subplot(212)
     plt.plot(np.arange(0, len(listb)), listb, 'r-')
-    plt.legend(["B"])
+    plt.xlabel("times")
+    plt.ylabel("money")
+    plt.legend(["B"],loc=1)
     plt.show()
 
 if __name__ == "__main__":
