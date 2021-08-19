@@ -1,8 +1,10 @@
 import random
-import matplotlib as plt
-def game(A,B,lista,listb):
-    a=random.randint(1,6)
-    b=random.randint(1,6)
+import matplotlib.pyplot as plt
+import numpy as np
+
+def game(A, B, lista, listb):
+    a=random.randint(1, 7)
+    b=random.randint(1, 7)
     if a>b:
         A+=100
         B-=100
@@ -11,26 +13,26 @@ def game(A,B,lista,listb):
         B+=100
     else:
         pass
-    lista.append(a)
-    listb.append(b)
-    return lista,listb,A,B
-
-def get_plot(lista,listb):
-    plt.figure(figsize=(10, 5), dpi=150)
-    plt.plot(len(lista),lista,marker = 'o',markersize = 1)
-    plt.plot(len(listb),listb,marker = 'o',markersize = 1)
-    plt.lengend(["A","B"])
-    plt.show
+    lista.append(A)
+    listb.append(B)
+    return lista, listb, A, B
 
 def main():
     lista=[]
     listb=[]
-    A=100
-    B=200
-    while A and B!=0:
-        game(A,B,lista,listb)
-    get_plot()
-    
+    A=10000
+    B=1000000
+    while A!=0 and B!=0:
+        lista, listb, A, B = game(A,B,lista,listb)
+    plt.figure(figsize=(10, 5), dpi=150)
+    plt.subplot(211)
+    plt.plot(np.arange(0, len(lista)), lista, 'k-')
+    plt.legend(["A"])
+    plt.subplot(212)
+    plt.plot(np.arange(0, len(listb)), listb, 'r-')
+    plt.legend(["B"])
+    plt.show()
+
 if __name__ == "__main__":
     main()
 
