@@ -68,7 +68,7 @@ def plot_single(A, B):
 if __name__ == "__main__":
     A, B = 10000, 1000000
     max_times = 100
-    plot_single(A, B)
+    # plot_single(A, B)
     print(dice_game_statistic(A, B, max_times))
 
 
